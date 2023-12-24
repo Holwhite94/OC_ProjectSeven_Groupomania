@@ -1,0 +1,290 @@
+@import './variables.scss';
+
+.app {
+    background-color: $backgroundColor;
+    
+}
+
+// sign up styling 
+#signup{
+
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+  h2{ 
+    font-family: $primaryFont; 
+    color: $primary;
+
+  }
+
+  input::placeholder {
+    color: $secondary;
+    opacity: 40%;
+    font-family: $primaryFont; 
+    font-style: italic;
+    text-align: center;
+  }
+
+  .form-label{
+    color: $primary;
+    font-family: $primaryFont; 
+    margin-top: 5px;
+  }
+
+  button {
+    background-color: $secondary;
+    opacity: 50%;
+    font-family: $primaryFont;
+    font-size: x-large;
+  }
+
+  a {
+    color: $primary;
+    font-family: $primaryFont; 
+    opacity: 70%;
+
+  }
+}
+
+// login / sign up styling
+#login{
+
+  margin-top: 5%; 
+  margin-bottom: 5%;
+
+  h2{ 
+    font-family: $primaryFont; 
+    color: $primary;
+
+  }
+
+  input::placeholder {
+    color: $secondary;
+    opacity: 40%;
+    font-family: $primaryFont; 
+    font-style: italic;
+    text-align: center;
+  }
+
+  .form-label{
+    color: $primary;
+    font-family: $primaryFont; 
+    margin-top: 5px;
+  }
+
+  button {
+    background-color: $secondary;
+    opacity: 50%;
+    font-family: $primaryFont;
+    font-size: x-large;
+  }
+
+  a {
+    color: $primary;
+    font-family: $primaryFont; 
+    opacity: 70%;
+
+  }
+}
+
+//header
+#firstNav {
+  background-color: rgb(255, 255, 255) !important;
+  box-shadow: 0px 0px 5px #ccc;
+ 
+  #firstNavText{
+    font-family: $primaryFont;
+    font-size: xx-large;
+    font-weight: bold;
+    color: $primary;
+  }
+
+  #basic-navbar-nav{ 
+    display: flex; 
+    justify-content: flex-end;
+
+    a{
+      color: $primary;
+      font-family: $primaryFont;
+      font-size: larger;
+      text-decoration: none;
+      padding: 10px;
+    }
+
+    a:hover {
+      font-size:larger;
+      font-weight: bold; 
+    }
+  }
+
+
+}
+
+//homepage header styling
+#homeNav {
+  background-color: rgb(255, 255, 255) !important;
+  box-shadow: 0px 0px 5px #ccc;
+
+  #homeNavText{
+    font-family: $primaryFont;
+    font-size: xx-large;
+    font-weight: bold;
+    color: $primary;
+  }
+
+  #basic-navbar-nav{ 
+    display: flex; 
+    justify-content: flex-end;
+  }
+  
+  #dropdown-item-button {
+    color: $secondary;
+  }
+  
+}
+
+// create post styling 
+#createPostContainer {
+
+  margin-top: 5%; 
+
+  h2 {
+    font-family: $primaryFont; 
+    color: $primary;
+  }
+
+  input::placeholder {
+    color: $secondary;
+    opacity: 50%;
+    font-family: $primaryFont; 
+    font-style: italic;
+    text-align: center;
+  }
+
+  .form-label{
+    color: $secondary;
+    opacity: 50%;
+    font-family: $primaryFont; 
+    font-style: italic;
+    display: flex;
+    justify-content: center; 
+    margin-top: 5px;
+  }
+
+  button {
+    background-color: $secondary;
+    opacity: 50%;
+    font-family: $primaryFont;
+    font-size: x-large;
+  }
+
+  
+}
+
+// Post Styling
+.post-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+  
+  
+  
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+  
+      .post-card {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .card-img-top {
+          object-fit: cover; 
+        }
+  
+        .card-title {
+          font-family: $primaryFont;
+          font-size: large; 
+          font-weight: bolder;
+          color: $primary;
+        }
+  
+        .card-text {
+          font-family: $primaryFont;
+          font-size: small;
+          font-style: italic;
+        }
+
+        #created-by {
+          display:flex; 
+          justify-content: space-between;
+
+        }
+  
+      }
+    }
+  }
+
+// create comment styling 
+#comment-label{
+  font-family: $primaryFont;
+  color: $primary;
+  font-weight: bold; 
+}
+
+#comment-button, #delete-button { 
+  background-color: $secondary;
+  opacity: 50%; 
+  font-family: $primaryFont; 
+  color: white; 
+  border-radius: 5px; 
+}
+
+
+
+// comments display
+#comment-container{
+
+  h4{
+    font-family: $primaryFont; 
+    color: $primary;
+    font-size: medium;
+    font-weight: bold;
+   } 
+  ul {
+      padding: 2px;
+      list-style: none !important;
+
+      li {
+        font-family: $primaryFont;
+        padding: 2px;
+        display: flex;
+        
+
+        p {
+          color: $primary;
+          font-weight: bold;
+          padding-right: 5px;
+          
+        }
+      }
+    }
+  
+}
+
+//footer 
+footer {
+  display: flex;
+  justify-content: center;
+
+  p {
+    font-family: $primaryFont;
+    color: $primary;
+    opacity: 70%; 
+    padding: 10px; 
+    }
+}

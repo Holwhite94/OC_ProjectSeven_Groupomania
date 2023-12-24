@@ -1,3 +1,13 @@
+https://github.com/Holwhite94/groupomania.git
+
+to run -
+front: navigate to / groupomania and run npm start 
+back: navigate to /back and run nodemon server 
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

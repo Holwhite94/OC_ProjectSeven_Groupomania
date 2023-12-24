@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto:wght@100;900&family=Rubik&display=swap");
+.app {
+  background-color: #d4d4d4;
+}
+
+#signup {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+#signup h2 {
+  font-family: "Rubik", sans-serif;
+  color: #0e213f;
+}
+#signup input::-moz-placeholder {
+  color: #d1515a;
+  opacity: 40%;
+  font-family: "Rubik", sans-serif;
+  font-style: italic;
+  text-align: center;
+}
+#signup input::placeholder {
+  color: #d1515a;
+  opacity: 40%;
+  font-family: "Rubik", sans-serif;
+  font-style: italic;
+  text-align: center;
+}
+#signup .form-label {
+  color: #0e213f;
+  font-family: "Rubik", sans-serif;
+  margin-top: 5px;
+}
+#signup button {
+  background-color: #d1515a;
+  opacity: 50%;
+  font-family: "Rubik", sans-serif;
+  font-size: x-large;
+}
+#signup a {
+  color: #0e213f;
+  font-family: "Rubik", sans-serif;
+  opacity: 70%;
+}
+
+#login {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+#login h2 {
+  font-family: "Rubik", sans-serif;
+  color: #0e213f;
+}
+#login input::-moz-placeholder {
+  color: #d1515a;
+  opacity: 40%;
+  font-family: "Rubik", sans-serif;
+  font-style: italic;
+  text-align: center;
+}
+#login input::placeholder {
+  color: #d1515a;
+  opacity: 40%;
+  font-family: "Rubik", sans-serif;
+  font-style: italic;
+  text-align: center;
+}
+#login .form-label {
+  color: #0e213f;
+  font-family: "Rubik", sans-serif;
+  margin-top: 5px;
+}
+#login button {
+  background-color: #d1515a;
+  opacity: 50%;
+  font-family: "Rubik", sans-serif;
+  font-size: x-large;
+}
+#login a {
+  color: #0e213f;
+  font-family: "Rubik", sans-serif;
+  opacity: 70%;
+}
+
+#firstNav {
+  background-color: rgb(255, 255, 255) !important;
+  box-shadow: 0px 0px 5px #ccc;
+}
+#firstNav #firstNavText {
+  font-family: "Rubik", sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  color: #0e213f;
+}
+#firstNav #basic-navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+}
+#firstNav #basic-navbar-nav a {
+  color: #0e213f;
+  font-family: "Rubik", sans-serif;
+  font-size: larger;
+  text-decoration: none;
+  padding: 10px;
+}
+#firstNav #basic-navbar-nav a:hover {
+  font-size: larger;
+  font-weight: bold;
+}
+
+#homeNav {
+  background-color: rgb(255, 255, 255) !important;
+  box-shadow: 0px 0px 5px #ccc;
+}
+#homeNav #homeNavText {
+  font-family: "Rubik", sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  color: #0e213f;
+}
+#homeNav #basic-navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+}
+#homeNav #dropdown-item-button {
+  color: #d1515a;
+}
+
+#createPostContainer {
+  margin-top: 5%;
+}
+#createPostContainer h2 {
+  font-family: "Rubik", sans-serif;
+  color: #0e213f;
+}
+#createPostContainer input::-moz-placeholder {
+  color: #d1515a;
+  opacity: 50%;
+  font-family: "Rubik", sans-serif;
+  font-style: italic;
+  text-align: center;
+}
+#createPostContainer input::placeholder {
+  color: #d1515a;
+  opacity: 50%;
+  font-family: "Rubik", sans-serif;
+  font-style: italic;
+  text-align: center;
+}
+#createPostContainer .form-label {
+  color: #d1515a;
+  opacity: 50%;
+  font-family: "Rubik", sans-serif;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+#createPostContainer button {
+  background-color: #d1515a;
+  opacity: 50%;
+  font-family: "Rubik", sans-serif;
+  font-size: x-large;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+}
+.post-container .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.post-container .card-container .post-card {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.post-container .card-container .post-card .card-img-top {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.post-container .card-container .post-card .card-title {
+  font-family: "Rubik", sans-serif;
+  font-size: large;
+  font-weight: bolder;
+  color: #0e213f;
+}
+.post-container .card-container .post-card .card-text {
+  font-family: "Rubik", sans-serif;
+  font-size: small;
+  font-style: italic;
+}
+.post-container .card-container .post-card #created-by {
+  display: flex;
+  justify-content: space-between;
+}
+
+#comment-label {
+  font-family: "Rubik", sans-serif;
+  color: #0e213f;
+  font-weight: bold;
+}
+
+#comment-button, #delete-button {
+  background-color: #d1515a;
+  opacity: 50%;
+  font-family: "Rubik", sans-serif;
+  color: white;
+  border-radius: 5px;
+}
+
+#comment-container h4 {
+  font-family: "Rubik", sans-serif;
+  color: #0e213f;
+  font-size: medium;
+  font-weight: bold;
+}
+#comment-container ul {
+  padding: 2px;
+  list-style: none !important;
+}
+#comment-container ul li {
+  font-family: "Rubik", sans-serif;
+  padding: 2px;
+  display: flex;
+}
+#comment-container ul li p {
+  color: #0e213f;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+footer p {
+  font-family: "Rubik", sans-serif;
+  color: #0e213f;
+  opacity: 70%;
+  padding: 10px;
+}/*# sourceMappingURL=app.css.map */
