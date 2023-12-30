@@ -31,9 +31,10 @@ function LoginForm() {
         const { userId, token } = data;
 
         localStorage.setItem('userId', data.userId);
-        console.log('User ID from localStorage:', userId);
         localStorage.setItem('token', data.token);
+
         setLoggedIn(true);
+        console.log('Logged in status:', loggedIn);
       } else {
         console.error('Login failed');
       }

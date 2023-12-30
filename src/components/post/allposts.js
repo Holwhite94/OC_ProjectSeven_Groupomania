@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 
 import CreateComment from '../createcomment';
 import deletePost from './deletepost';
+import deleteComment from '../deletecomment';
 
 // get posts 
 function getAllPosts() {
@@ -26,6 +27,9 @@ function PostCards() {
         console.error('There was a problem fetching the posts:', error);
       });
   }, []);
+
+
+  // post delete
 
   // handle delete 
   const handleDelete = async (postId, userId) => {
@@ -56,6 +60,33 @@ function PostCards() {
     return null;
   };
 
+   // handle comment delete
+  const handleDeleteComment = async (commentId, userId) => {
+    const confirmed = window.confirm('Are you sure you want to delete this comment?');
+    if (confirmed) {
+      const token = localStorage.getItem('token');
+      await deleteComment(commentId, token);
+      // Refresh comments after delete
+      getAllPosts()
+        .then(data => setPosts(data))
+        .catch(error => {
+          console.error('There was a problem fetching the posts:', error);
+        });
+    }
+  };
+
+  const renderCommentDeleteButton = (comment) => {
+    const userId = localStorage.getItem('userId'); 
+    console.log(userId);
+    console.log(comment.creator);
+    if (String(userId) === String(comment.creator)) {
+      return (
+        <button id="delete-button" onClick={() => handleDeleteComment(comment.id, userId)}>Delete</button>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="post-container">
       <div className="card-container">
@@ -73,7 +104,8 @@ function PostCards() {
               <h4>Comments:</h4>
               <ul id="comment-list">
                 {post.Comments && post.Comments.map((comment, commentIndex) => (
-                  <li key={commentIndex}> <p id="creator">{comment.commentCreator && comment.commentCreator.firstName}:</p> {comment.text}</li>
+                  <li key={commentIndex}> <p id="creator">{comment.commentCreator && comment.commentCreator.firstName}:</p> {comment.text} {renderCommentDeleteButton(comment)}</li>
+                
                 ))}
               </ul>
             </div>

@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import necessary components
@@ -17,19 +17,26 @@ import './scss/app.scss'
 // use exact path to ensure component only renedered with url match exactly 
 
 function App() {
+  
+  // setting logged in state to protect homepage route
+  const [loggedIn, setLoggedIn] = useState(null);
+
+  useEffect(() => {
+    console.log('loggedIn value:', loggedIn);
+  }, [loggedIn]);
+
   return (
     <Router>
-      <Routes>
-        <Route path="/signup" element={<SignUpView />} />
-        <Route path="/login" element={<LoginView />} />
-        <Route path="/homepage" element={<HomePageView />} />
-        <Route path="/" element={<SignUpView />} />
-      </Routes>
-    </Router>
+  <Routes>
+  <Route path="/signup" element={<SignUpView />} />
+  <Route path="/login" element={<LoginView setLoggedIn={setLoggedIn} />} />
+  <Route path="/homepage" element={loggedIn ? <HomePageView /> : <LoginView setLoggedIn={setLoggedIn} />} />
+  <Route path="/" element={<SignUpView />} />
+</Routes>
+</Router>
   );
 }
 
-// add / for default page e.g first page rendered
 
 export default App;
 

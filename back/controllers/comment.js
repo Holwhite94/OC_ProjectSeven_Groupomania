@@ -63,4 +63,32 @@ exports.getComments = (req, res, next) => {
     }]
 
 
- 
+// delete comment 
+exports.deleteComment = [
+  authMiddleware,
+  async (req, res, next) => {
+    try {
+      const userId = req.auth.userId;
+      if (!userId) {
+        return res.status(401).json({ error: 'User ID not found in request' });
+      }
+
+      const { id } = req.params;
+      const comment = await Comment.findByPk(id);
+
+      if (!comment) {
+        return res.status(404).json({ error: 'Comment not found' });
+      }
+
+      if (comment.userId !== userId) {
+        return res.status(403).json({ error: 'User cannot delete this comment' });
+      }
+
+      await comment.destroy();
+
+      return res.status(200).json({ message: 'Comment deleted!' });
+    } catch (error) {
+      return res.status(500).json({ error: 'Server error' });
+    }
+  }
+];
