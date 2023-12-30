@@ -9,11 +9,11 @@ import Footer from '../components/footer';
 
 //sign up view 
 
-function LoginView() {
+function LoginView({ setLoggedIn }) {
     return (
       <div>
         <Header />
-        <Login />
+        <Login setLoggedIn={setLoggedIn} />
         <Footer />
       </div>
     );

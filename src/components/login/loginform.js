@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -6,13 +6,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function LoginForm() {
+function LoginForm({ setLoggedIn }) {
+
+  console.log(typeof setLoggedIn); 
+  
   const [login, updateLogin] = useState({
     email: '',
     password: '',
   });
-
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,7 +35,7 @@ function LoginForm() {
         localStorage.setItem('token', data.token);
 
         setLoggedIn(true);
-        console.log('Logged in status:', loggedIn);
+        
       } else {
         console.error('Login failed');
       }
@@ -43,6 +44,8 @@ function LoginForm() {
       setLoggedIn(false);
     }
   };
+
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -53,7 +56,7 @@ function LoginForm() {
     <Container id="login">
       <Row className="justify-content-center">
         <Col xs={12} sm={8} md={6}>
-          {loggedIn && <Navigate to="/homepage" />}
+          {/* {loggedIn && <Navigate to="/homepage" />} */}
           <h2 className="text-center mb-4">Login</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail">
