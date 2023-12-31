@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
-function CreatePostForm() {
+// import getAllPosts from './getallposts';
+
+function CreatePostForm({ refreshPosts }) {
+  // for created post
   const [post, setPost] = useState({
     text: '',
     image: null,
     created: false,
   });
+
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -47,6 +51,9 @@ function CreatePostForm() {
 
       if (response.ok) {
         setPost({ ...post, created: true });
+
+        await refreshPosts()
+
       } else {
         console.error('Post creation failed');
       }
@@ -54,6 +61,8 @@ function CreatePostForm() {
       console.error('Error creating post:', error);
     }
   };
+
+
 
   return (
     <Container id="createPostContainer">

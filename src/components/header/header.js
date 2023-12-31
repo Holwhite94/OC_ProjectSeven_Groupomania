@@ -25,7 +25,7 @@ function Header() {
           alt="Logo"
         />
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav id="navLink" className="ml-auto">
           <Link to="/signup">Sign Up</Link>

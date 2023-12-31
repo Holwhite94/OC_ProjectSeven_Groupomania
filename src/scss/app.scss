@@ -138,7 +138,19 @@
   }
   
   #dropdown-item-button {
-    color: $secondary;
+    color: $primary;
+    background-color: white; 
+    border-color: $primary;
+  }
+
+  .dropdown-menu {
+    display: flex;
+    flex-direction:column;
+  }
+
+  a {
+    color: $primary;
+    font-family: $primaryFont;
   }
   
 }

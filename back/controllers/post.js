@@ -64,7 +64,7 @@ authMiddleware,
     creator: userId,
     createdDate: new Date(),
   });
-  console.log(post);
+  
 
   post.save().then(
     () => {

@@ -50,7 +50,7 @@ exports.getComments = (req, res, next) => {
     comment.save().then(
         () => {
             res.status(201).json({
-              message: "Post created successfully"
+              message: "Comment created successfully"
             });
           },
         ).catch(
@@ -80,7 +80,7 @@ exports.deleteComment = [
         return res.status(404).json({ error: 'Comment not found' });
       }
 
-      if (comment.userId !== userId) {
+      if (comment.creator !== userId) {
         return res.status(403).json({ error: 'User cannot delete this comment' });
       }
 

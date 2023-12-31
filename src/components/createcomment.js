@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 
-function CreateCommentForm({postId}) {
+function CreateCommentForm({postId, refreshPosts}) {
   const [comment, setComment] = useState({
     text: '', 
     created: false,
@@ -34,6 +34,9 @@ function CreateCommentForm({postId}) {
 
       if (response.ok) {
         setComment({ ...comment, created: true });
+        console.log('Comment created successfully');
+        await refreshPosts();
+        console.log('Posts refreshed');
       } else {
         console.error('Comment creation failed');
       }
@@ -42,11 +45,6 @@ function CreateCommentForm({postId}) {
     }
   };
 
-  //didnt work
-//   const handlePostId = (e) => {
-//     const postId = e.target.closest('.post').getAttribute('data-post-id');
-//     setComment({ ...comment, postId });
-//   };
 
   return (
     <Form onSubmit={handleSubmit}>

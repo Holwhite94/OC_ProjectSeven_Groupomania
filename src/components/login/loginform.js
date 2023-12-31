@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -6,14 +6,15 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function LoginForm({ setLoggedIn }) {
+function LoginForm({ loggedIn, setLoggedIn }) {
 
-  console.log(typeof setLoggedIn); 
   
   const [login, updateLogin] = useState({
     email: '',
     password: '',
   });
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -52,11 +53,12 @@ function LoginForm({ setLoggedIn }) {
     updateLogin({ ...login, [name]: value });
   };
 
+  console.log('loggedIn value at submit:', loggedIn);
   return (
     <Container id="login">
+      {loggedIn ? <Navigate to="/homepage" /> : null}
       <Row className="justify-content-center">
         <Col xs={12} sm={8} md={6}>
-          {/* {loggedIn && <Navigate to="/homepage" />} */}
           <h2 className="text-center mb-4">Login</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail">

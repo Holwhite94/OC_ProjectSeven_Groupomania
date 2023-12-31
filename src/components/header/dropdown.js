@@ -1,5 +1,5 @@
 //bootstrap 
-import Dropdown from 'react-bootstrap/Dropdown';
+// import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 //react
@@ -10,19 +10,17 @@ import { Link } from 'react-router-dom';
 function DropdownNav() {
 
 
-// const [loggedIn, setLoggedIn] = useState(true); 
 
   const handleLogout = () => {
     localStorage.removeItem('token'); 
-    //  setLoggedIn(false);
     
   };
 
-  const handleDelete = () => {
+  const handleDeleteAccount = () => {
     const userId = localStorage.getItem('userId'); 
     const token = localStorage.getItem('token');
 
-    return fetch(`http://localhost:5000/api/auth/posts/${userId}`, {
+    return fetch(`http://localhost:5000/api/auth/user/${userId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`
@@ -32,6 +30,7 @@ function DropdownNav() {
         if (response.ok) {
           console.log('Account deleted!');
           localStorage.removeItem('token');
+
         } else {
           throw new Error('Account deletion failed');
         }
@@ -44,9 +43,9 @@ function DropdownNav() {
 
   return (
     <DropdownButton id="dropdown-item-button" title=". . .">
-      <Dropdown.Item as="button">Profile</Dropdown.Item>
+      <Link to="#">Profile</ Link>
       <Link to="/login" onClick={handleLogout}>Logout</Link>
-      <Dropdown.Item as="button"  onClick={handleDelete}>Delete account</Dropdown.Item>
+      <Link to="/signup"  onClick={handleDeleteAccount}>Delete account</Link>
     </DropdownButton>
   );
 }

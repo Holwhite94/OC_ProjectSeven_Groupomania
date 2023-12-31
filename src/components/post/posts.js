@@ -4,20 +4,12 @@ import Card from 'react-bootstrap/Card';
 import CreateComment from '../createcomment';
 import deletePost from './deletepost';
 import deleteComment from '../deletecomment';
+import getAllPosts from '../post/getallposts';
 
-// get posts 
-function getAllPosts() {
-  return fetch("http://localhost:5000/api/auth/posts/all")
-    .then(response => response.json())
-    .catch(error => {
-      console.error('There was a problem fetching the posts:', error);
-      return [];
-    });
-}
 
 
 // display posts 
-function PostCards() {
+function PostCards({ refreshPosts }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -26,23 +18,17 @@ function PostCards() {
       .catch(error => {
         console.error('There was a problem fetching the posts:', error);
       });
-  }, []);
+  }, [refreshPosts]);
 
 
-  // post delete
-
-  // handle delete 
+ // handle post delete 
   const handleDelete = async (postId, userId) => {
     const confirmed = window.confirm('Are you sure you want to delete this post?');
     if (confirmed) {
       const token = localStorage.getItem('token');
       await deletePost(postId, token);
       // Refresh posts after delete
-      getAllPosts()
-        .then(data => setPosts(data))
-        .catch(error => {
-          console.error('There was a problem fetching the posts:', error);
-        });
+      await refreshPosts();
     }
   };
 
@@ -50,8 +36,6 @@ function PostCards() {
   // render delete button based on user id
   const renderDeleteButton = (post) => {
     const userId = localStorage.getItem('userId'); 
-    console.log(userId);
-    console.log(post.creator);
     if (String(userId) === String(post.creator)) {
       return (
         <button id="delete-button" onClick={() => handleDelete(post.id, userId)}>Delete</button>
@@ -67,18 +51,12 @@ function PostCards() {
       const token = localStorage.getItem('token');
       await deleteComment(commentId, token);
       // Refresh comments after delete
-      getAllPosts()
-        .then(data => setPosts(data))
-        .catch(error => {
-          console.error('There was a problem fetching the posts:', error);
-        });
+      await refreshPosts();
     }
   };
 
   const renderCommentDeleteButton = (comment) => {
     const userId = localStorage.getItem('userId'); 
-    console.log(userId);
-    console.log(comment.creator);
     if (String(userId) === String(comment.creator)) {
       return (
         <button id="delete-button" onClick={() => handleDeleteComment(comment.id, userId)}>Delete</button>
@@ -86,6 +64,11 @@ function PostCards() {
     }
     return null;
   };
+
+  useEffect(() => {
+    console.log('PostCards component re-rendered'); 
+  }, [posts, refreshPosts]);
+
 
   return (
     <div className="post-container">
@@ -98,7 +81,7 @@ function PostCards() {
               <Card.Text>Created on: {new Date(post.createdDate).toLocaleDateString()}</Card.Text>
               <Card.Text id="created-by">Created by: {post.postCreator && post.postCreator.firstName} {renderDeleteButton(post)}</Card.Text>
               <div className="btn-container">
-                <CreateComment postId={post.id} />
+                <CreateComment postId={post.id} refreshPosts={refreshPosts} />
               </div>
               <div id="comment-container">
               <h4>Comments:</h4>
