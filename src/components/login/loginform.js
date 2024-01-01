@@ -1,61 +1,58 @@
-import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// react
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+// bootstrap
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
+// login form + logged in state passed down
 function LoginForm({ loggedIn, setLoggedIn }) {
-
-  
   const [login, updateLogin] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
-
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(login)
+        body: JSON.stringify(login),
       });
 
       if (response.ok) {
         const data = await response.json();
         const { userId, token } = data;
 
-        localStorage.setItem('userId', data.userId);
-        localStorage.setItem('token', data.token);
+        localStorage.setItem("userId", data.userId);
+        localStorage.setItem("token", data.token);
 
         setLoggedIn(true);
-        
       } else {
-        console.error('Login failed');
+        console.error("Login failed");
       }
-    } catch (error) { 
-      console.error('Error:', error);
+    } catch (error) {
+      console.error("Error:", error);
       setLoggedIn(false);
     }
   };
-
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     updateLogin({ ...login, [name]: value });
   };
 
-  console.log('loggedIn value at submit:', loggedIn);
+  console.log("loggedIn value at submit:", loggedIn);
   return (
     <Container id="login">
+      {/* logged in = true : redirect to homepage */}
       {loggedIn ? <Navigate to="/homepage" /> : null}
       <Row className="justify-content-center">
         <Col xs={12} sm={8} md={6}>

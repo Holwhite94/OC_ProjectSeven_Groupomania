@@ -1,3 +1,6 @@
+
+// delete post with postId passed as a parameter
+
 function deletePost(postId) {
     const token = localStorage.getItem('token');
   

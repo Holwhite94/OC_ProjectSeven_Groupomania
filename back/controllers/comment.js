@@ -1,29 +1,9 @@
-
+// import auth middleware
 const authMiddleware = require('../middleware/auth');
+// import comment controller
 const {Comment}= require('../models/models');
   
 
-// get commets for post do I need this anymore?????
-exports.getComments = (req, res, next) => {
-
-    const match = {}
-    if(req.query.postId){
-        match.postId = req.query.postId
-    }
-    Comment.findAll({where:match})
-    .then(
-      (comments) => {
-        return res.status(200).json(comments);
-      }
-    )
-    .catch(
-      (error) => {
-        return res.status(400).json({
-          error: error
-        });
-      }
-    );
-  };
 
   // create comment 
 

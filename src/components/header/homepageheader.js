@@ -1,11 +1,13 @@
+// import logo
 import Logo from '../../logos/icon.png';
-
+// import react
 import React from 'react';
-
+// import navbar from bootstrap 
 import { Navbar, Container, Nav } from 'react-bootstrap';
-
+// import dropdown component 
 import DropdownNav from '../header/dropdown';
 
+//header for homepage WITH dropdown
 function HomePageHeader() {
 
 
@@ -23,7 +25,6 @@ function HomePageHeader() {
             alt="Logo"
           />
         </Navbar.Brand>
-        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
             < DropdownNav />

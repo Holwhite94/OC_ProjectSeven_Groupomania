@@ -1,4 +1,3 @@
-
 // react
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -10,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 import Logo from '../../logos/icon.png';
 
 
-
+// header for login and sign up pages only - without the dropdown...
 function Header() {
   return (
     <Navbar id="firstNav" expand="lg" bg="light" variant="light">
@@ -25,7 +24,6 @@ function Header() {
           alt="Logo"
         />
       </Navbar.Brand>
-      {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav id="navLink" className="ml-auto">
           <Link to="/signup">Sign Up</Link>
@@ -40,6 +38,3 @@ function Header() {
 export default Header;
 
 
-// class name mr ml sets alignment 
-// add links to other pages 
-// https://react-bootstrap.github.io/docs/components/navbar

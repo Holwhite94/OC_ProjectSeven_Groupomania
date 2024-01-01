@@ -9,6 +9,7 @@ function getAllPosts(token) {
       .then(response => response.json())
       .catch(error => {
         console.error('There was a problem fetching the posts:', error);
+        // if error return empty array
         return [];
       });
   }

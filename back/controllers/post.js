@@ -1,16 +1,14 @@
+// import all models as we need all three
 const {Post, Comment, User }= require('../models/models');
-
-// const { Op } = require('sequelize');
-
-
-
+// import auth middelware 
 const authMiddleware = require('../middleware/auth');
 
 
-
+// get all posts WITH comments AND associated users as 'creators'
 exports.getPostsWithComments = async (req, res, next) => {
   try {
     const postsWithComments = await Post.findAll({
+  
       include: [ {
         model: Comment,
         required: false,
@@ -60,7 +58,7 @@ authMiddleware,
 
   const post = new Post({
     text: req.body.text,
-    imageUrl:imageUrl, // if image found added if not remains empty string :)
+    imageUrl:imageUrl, // if image found added if not remains empty string
     creator: userId,
     createdDate: new Date(),
   });
@@ -90,20 +88,19 @@ exports.deletePost = [
     try {
       //get user id from token header
       const userId = req.auth.userId;
-      console.log(userId);
+      
       if (!userId) {
         return res.status(401).json({ error: 'User ID not found in request' });
       }
       // get post id from req params and match to database by find by primary key 
       const { id } = req.params;
       const post = await Post.findByPk(id);
-      console.log(post.creator);
 
       if (!post) {
         return res.status(404).json({ error: 'Post not found' });
       }
 
-      // checks if user id matches creator id so only users who created can delete :)
+      // checks if user id matches creator id so only users who created can delete
       if (post.creator !== userId) {
         return res.status(403).json({ error: 'User cannot delete this post' });
       }

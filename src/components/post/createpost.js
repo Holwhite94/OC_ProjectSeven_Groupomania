@@ -1,8 +1,9 @@
+// react
 import React, { useState } from 'react';
+// bootstrap
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
-// import getAllPosts from './getallposts';
-
+// create post WITH refreshPosts passed down
 function CreatePostForm({ refreshPosts }) {
   // for created post
   const [post, setPost] = useState({

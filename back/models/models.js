@@ -1,7 +1,7 @@
+// import sequelize
 const { Sequelize, DataTypes } = require('sequelize');
 
-// const Comment = require('../models/comment');
-
+// connect to postgresql database 
 const sequelize = new Sequelize('Groupomania', 'postgres', 'P3anut23!', {
     host: 'localhost',
     dialect: 'postgres',

@@ -1,17 +1,12 @@
-//bootstrap 
-// import Dropdown from 'react-bootstrap/Dropdown';
+// bootstrap
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 //react
 import { Link } from 'react-router-dom';
 
-
-
 function DropdownNav() {
 
-
-
-  const handleLogout = () => {
+const handleLogout = () => {
     localStorage.removeItem('token'); 
     
   };

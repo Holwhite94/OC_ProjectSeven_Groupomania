@@ -1,65 +1,60 @@
-// import user state
-import React, { useState } from 'react';
-
-import { Link, Navigate } from 'react-router-dom';
+// react
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 
 //bootstrap react imports
 
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-// use container, row, col to adjust placement and sizing using bootstrap grid 
-// https://react-bootstrap.github.io/docs/forms/layout
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 // set user state for sign up
 function SignUpForm() {
   const [signUp, updateSignUp] = useState({
-    firstName: '',
-    secondName: '',
-    email: '',
-    password: '',
+    firstName: "",
+    secondName: "",
+    email: "",
+    password: "",
   });
 
+  // set state to follow sign up
+  const [signedUp, setSignedUp] = useState(false);
 
-// set state to follow sign up
-  const [signedUp, setSignedUp] = useState(false); 
-
-  // handle submit post request 
+  // handle submit /post request
   const handleSubmit = (event) => {
     event.preventDefault();
 
     fetch("http://localhost:5000/api/auth/signup", {
-            method: 'POST',
-            body: JSON.stringify(signUp),
-            headers: { 'Content-Type': 'application/json' }
-        })
-        .then(response => {
-          if (response.ok) {
-            setSignedUp(true); 
-          } else {
-            console.log('Sign up failed')
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    
+      method: "POST",
+      body: JSON.stringify(signUp),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        if (response.ok) {
+          setSignedUp(true);
+        } else {
+          console.log("Sign up failed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
-  // add section for change with update sign up 
+  // add section for change with update sign up
   const handleChange = (event) => {
     const { name, value } = event.target;
     updateSignUp({ ...signUp, [name]: value });
   };
 
-  // return html 
+  // return html
   return (
     <Container id="signup">
       <Row className="justify-content-center">
         <Col xs={12} sm={8} md={6}>
-        {signedUp && <Navigate to="/login" />} 
+          {signedUp && <Navigate to="/login" />}
           <h2 className="text-center mb-4">Sign Up</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="firstName">

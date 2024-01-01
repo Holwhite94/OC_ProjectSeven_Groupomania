@@ -28,6 +28,7 @@ function HomePageView({ setLoggedIn }) {
     refreshPosts(); 
   }, [refreshPosts]);
 
+  // components to be rendered and passing down functions to be used
  return (
  <div> 
     < HomePageHeader setLoggedIn={setLoggedIn} />

@@ -2,13 +2,13 @@
 
 //import authentication
 const jwt = require("jsonwebtoken");
-
+const authMiddleware = require('../middleware/auth');
 // import bcrypt
 const bcrypt = require("bcrypt");
-
+//.import user model
 const {User}= require('../models/models');
 
-const authMiddleware = require('../middleware/auth');
+
 
 //sign up
 
@@ -22,8 +22,7 @@ bcrypt.hash(req.body.password, 10)
         password : hash
         });
     
-      console.log('User Object:', user);
-       return user.save(); // Save the user to the database?
+       return user.save(); 
     })
     .then(() => {
         res.status(201).json({
@@ -58,11 +57,11 @@ exports.login = (req, res, next) => {
                 error: new Error("Password not valid"),
               });
             }
-  
+            // generate token with user id and email adress in :)
             const token = jwt.sign({ userId: user.id, email: user.email }, "RANDOM_TOKEN_SECRET", {
               expiresIn: "24h",
             });
-  
+            
             res.status(200).json({
               userId: user.id,
               email: user.email,
@@ -88,7 +87,7 @@ exports.deleteUser = [
   authMiddleware,
   async (req, res, next) => {
     try {
-      //get user id from token header
+    
       const id = req.auth.userId;
       
       if (!id) {

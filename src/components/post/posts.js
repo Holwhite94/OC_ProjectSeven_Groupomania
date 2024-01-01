@@ -1,9 +1,11 @@
+// react
 import React, { useState, useEffect } from 'react';
+// bootstrap
 import Card from 'react-bootstrap/Card';
-
-import CreateComment from '../createcomment';
+// functions
+import CreateComment from '../comment/createcomment';
 import deletePost from './deletepost';
-import deleteComment from '../deletecomment';
+import deleteComment from '../comment/deletecomment';
 import getAllPosts from '../post/getallposts';
 
 
@@ -12,6 +14,7 @@ import getAllPosts from '../post/getallposts';
 function PostCards({ refreshPosts }) {
   const [posts, setPosts] = useState([]);
 
+  // get the posts
   useEffect(() => {
     getAllPosts()
       .then(data => setPosts(data))
