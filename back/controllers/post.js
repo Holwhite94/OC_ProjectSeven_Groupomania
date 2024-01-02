@@ -5,7 +5,10 @@ const authMiddleware = require('../middleware/auth');
 
 
 // get all posts WITH comments AND associated users as 'creators'
-exports.getPostsWithComments = async (req, res, next) => {
+exports.getPostsWithComments = [
+  
+  authMiddleware,
+  async (req, res, next) => {
   try {
     const postsWithComments = await Post.findAll({
   
@@ -32,7 +35,7 @@ exports.getPostsWithComments = async (req, res, next) => {
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }
-};
+}];
 
 // create post 
 exports.createPost = [
