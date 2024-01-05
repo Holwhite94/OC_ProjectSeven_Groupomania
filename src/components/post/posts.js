@@ -17,7 +17,11 @@ function PostCards({ refreshPosts }) {
   // get the posts
   useEffect(() => {
     getAllPosts()
-      .then(data => setPosts(data))
+      .then(data => {
+        
+        const sortedPosts = data.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
+        setPosts(sortedPosts);
+      })
       .catch(error => {
         console.error('There was a problem fetching the posts:', error);
       });

@@ -8,6 +8,7 @@ const authMiddleware = require('../middleware/auth');
 exports.getPostsWithComments = [
   
   authMiddleware,
+  
   async (req, res, next) => {
   try {
     const postsWithComments = await Post.findAll({

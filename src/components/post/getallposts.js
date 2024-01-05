@@ -8,7 +8,6 @@ function getAllPosts() {
     console.error('Token not found in local storage');
   }
 
-  console.log('Token:', token);
 
     return fetch("http://localhost:5000/api/auth/posts/all", {
         headers: {
