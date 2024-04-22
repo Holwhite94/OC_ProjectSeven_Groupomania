@@ -1,4 +1,10 @@
-https://github.com/Holwhite94/groupomania.git
+#projectseven
+
+The brief - Build a full stack solution
+
+-For my final project with Open Classrooms I was tasked with building a full stack solution based on a brief of desired website, an internal company social network.
+-To create this app I used react and planned around functionality working out what was needed and how this would be implemented in the front and backend. I used postgreSQL as the database and tied it all together with javascript.
+-The end result was a fully functioning app in which a user can create a profile/ account, then share posts with or without an image and comment on other users posts. There was also the option to delete the account, post or comment. I was very happy with how this project turned out and passed after presenting my solution to the brief. 
 
 to run -
 front: navigate to / groupomania and run npm start 
